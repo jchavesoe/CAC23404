@@ -1,0 +1,57 @@
+agenda1 = {"Basualdo": 4034456, "Angel": 43523454, "Castro":4023565,"Chocobares":4134534,"Díaz":4692332, "Antezana": 4328832}
+
+def opcionsistema():
+    opciones = int(input("Ingrese la opción que desea realizar [1] Buscar contacto [2] Agregar contacto [3] Eliminar contacto [4] Mostrar todos los contactos [5] Salir del programa"))
+    if opciones == 1:
+        consultarcontacto()
+    elif opciones == 2:
+        agregarcontacto()
+    elif opciones == 3:
+        eliminarcontacto()
+    elif opciones == 4:
+        todosloscontactos()
+    elif opciones == 5:
+        print ("Gracias por utilizar AGENDA 2023 VUELVA PRONTOS")
+    
+
+
+def consultarcontacto():
+    contacto = input("Qué nombre quisiera consultar?").capitalize()
+    if contacto not in agenda1:
+        print (f"El contacto no se encuentra en la agenda")        
+    else:
+        telefono = agenda1[contacto] #SE LE ASIGNA LA VARIABLE TELEFONO AL VALUE Y CONTACTO A LA KEY
+        print (f"El teléfono de {contacto} es : {telefono}")
+    opcionsistema()
+
+def agregarcontacto():
+        contacto = input("Qué nombre quisiera agregar?").capitalize()
+        telefono = (input(f"Ingrese el número de teléfono del contacto {contacto}"))
+        agenda1[contacto] = telefono #SELE ASIGNA EL VALUE TELEFONO
+        print (f"El teléfono del nuevo contacto {contacto} es : {telefono}")
+        opcionsistema()
+
+def eliminarcontacto():
+    contacto = input("Qué nombre quisiera eliminar?").capitalize()
+    if contacto not in agenda1:
+        print (f"El contacto no se encuentra en la agenda")
+    else:
+        agenda1.pop(contacto)
+        print (f"El contacto {contacto} se eliminó correctamente")
+        print ("La nueva lista en la agenda es la siguiente: ")
+        print (agenda1)
+    opcionsistema()
+
+def todosloscontactos():
+    print ("Esta es la lista de todos los contactos: ")
+    for todo in agenda1.items():
+        print(todo)
+    opcionsistema()
+
+
+print  ("#"*50)
+print  ("BIENVENIDO A LA AGENDA 2023")
+print  ("#"*50)
+
+opcionsistema()
+
